@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Détail de la carte {{ pizzeria.nom }}{% endblock %}
+
+{% block titrePage %}
+    <span>la carte</span> {{ pizzeria.nom }}
+{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <th>Pizza</th>
+            <th>Prix</th>
+            <th><th>
+        </tr>
+    
+        {% for pizza in pizzeria.pizzas %}
+            <tr>
+                <td>
+                    {{ pizza.nom }}
+                </td>
+                <td>
+                    {{ (pizzeria.marge * pizza.coutFabrication)|round(2) }}
+                    <span class=tp-detail-eur-carte>€</span>
+                </td>
+                <td>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
